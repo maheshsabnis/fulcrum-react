@@ -219,9 +219,69 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
+        - Use the 'useState()' hook to define a State Property with initial value and method to update an initial value
+            - The React Hooks is a function with predefined behavior
+            - Introduced in 16.8+
+            - Mandatory in Functional Components
+            - They are used only at 'FUNCTIONAL-COMPONENT-LEVEL' and not inside any other function of the component
+        - Standard Hooks
+            - useState(), useContext(), useEffect()
+            - useReducer(), useMemo()    
+        - The 'useState()', hook for defining 'STATE-PROPERTIES' for the functional component
+            - this is imported from the 'react' package
+            - syntax
+                - const [STATE-PROPERTY-NAME, ACTION-THAT-WILL-UPDATE-STATE-PROPERTY-VALUE] = useState(INITIAL-VALUE);
+                    - STATE-PROPERTY-NAME: The state property, that will be bound to HTML UI of the Component
+                    - INITIAL-VALUE: The initial value of state property that will be used by the component
+                    - ACTION-THAT-WILL-UPDATE-STATE-PROPERTY-VALUE: The action-method (function) that will be called on event of the HTML UI element which is responsible to update the initial value of state property to new value 
+``` javascript
+import {useState} from 'react';
 
+import './App.css';
 
-        - Use the 'useState()' hook to define a State Property with initial value and method to update an initial value-
+function App(props) {
+
+  // define a state property
+
+  const [name, updateName] = useState('Mahesh');
+
+  // method of the component that will be bound with HTML element
+  const helloClick =()=>{
+    alert('I am Clicked');
+  };
+  return (
+    <div className="App">
+       <h1>The First Component</h1>
+       {/* the onClick is JSX event property that corresponds to onClick event of HTML  */}
+       <input type="button" value="Hello" onClick={helloClick}/>
+       <br/>
+       <div>
+         <strong>
+            Value received from Parent is {props.msg} 
+         </strong>   
+       </div> 
+       <div>
+          {/* bind the 'value' property of the input:text to 'name' state property
+          value={name} --> One-Way Data Flow (From Component-to-UI)
+            using 'onChange', received the end-user entered value in input element and
+            update this new value in the 'name' state property
+              onChange={(evt)=> updateName(evt.target.value)} --> One-Way Data Flow (UI-to-Component)
+            */}
+           <input type="text" value={name}
+             onChange={(evt)=> updateName(evt.target.value)}/>
+           <br/>
+           <strong>
+             Name = {name}
+           </strong>
+
+       </div>
+    </div>
+  );
+}
+// export the component
+export default App;
+
+```
 
 
 

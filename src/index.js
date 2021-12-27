@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import the exported component
 import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+import SimpleCalculator from './calculator';
 
 const message = 'I am a message from the parent';
 
@@ -13,7 +15,8 @@ ReactDOM.render(
      to pass data and events across components 
      Here the 'msg' is a custom JSX attribute 
      The 'msg' attribute will be used as {props.msg} in App Component */}
-    <App  msg={message}/>
+    {/* <App  msg={message}/> */}
+    <SimpleCalculator/>
   </React.StrictMode>,
   document.getElementById('root')
 );

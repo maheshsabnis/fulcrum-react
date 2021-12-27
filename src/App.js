@@ -1,25 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+function App(props) {
+
+  // method of the component that will be bound with HTML element
+  const helloClick =()=>{
+    alert('I am Clicked');
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <h1>The First Component</h1>
+       {/* the onClick is JSX event property that corresponds to onClick event of HTML  */}
+       <input type="button" value="Hello" onClick={helloClick}/>
+       <br/>
+       <div>
+         <strong>
+            Value received from Parent is {props.msg} 
+         </strong>   
+       </div> 
     </div>
   );
 }
-
+// export the component
 export default App;

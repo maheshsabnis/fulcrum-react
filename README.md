@@ -109,7 +109,119 @@
             - componentWillUnMount()
                 - Unload the component from DOM
             - componentDidCatch(error)
-                - If any component throws an exception then it will be handled and instead of crashing UI the fallback UI will be displayed (rendered)            
+                - If any component throws an exception then it will be handled and instead of crashing UI the fallback UI will be displayed (rendered)       
+        - Functional Components             
+            - Introduced in React 16.0
+            - Recommended from React 16.8
+            - Class Components are nor deprecated, but all fresh development is in functional components  
+            - It is a JavaScript function that returns HTML
+                - Syntax:
+                    - function [COMPONENT-NAME] (props){
+                        ....... logic method
+                        return (HTML-DOM);
+                    }
+                    - const [COMPONENT-NAME](props)=> {
+                        .......logic methods
+                        return (HTML-DOM)
+                    } 
+
+                    - const [COMPONENT-NAME]=()=>(
+                        return (HTML-DOM)
+                    )
+2. The 'src' folder file structure
+    - App.js
+        - A default component
+    - index.js
+        - The file that contains code to mount and render the App.js (or other components) in index.html page of 'public' folder
+``` javascript
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+    - ReactDOM.render()
+        - ReactDOM an object from 'react-dom' package
+        - This will mount the 'App' component in the HTML element  with id as 'root' on index.html
+``` javascript
+"scripts": {
+    "start": "react-scripts start",  // build and host the react application 
+    "build": "react-scripts build", // build the project and will generate the build filed
+    "test": "react-scripts test",  // test the react application
+    "eject": "react-scripts eject" // manage the package updates 
+  }
+```
+
+# Programming with Functional Components
+    - The Component without any Data but just having events bound to HTMl Elements
+ ``` javascript
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+
+  // method of the component that will be bound with HTML element
+  const helloClick =()=>{
+    alert('I am Clicked');
+  };
+  return (
+    <div className="App">
+       <h1>The First Component</h1>
+       {/* the onClick is JSX event property that corresponds to onClick event of HTML  */}
+       <input type="button" value="Hello" onClick={helloClick}/>
+    </div>
+  );
+}
+// export the component
+export default App;
+ ```
+    - Create a Component with Data aka 'Stateful' Component
+        - Use 'props' to received data from parent-component
+            - The 'props' is an immutable object
+``` javascript
+import logo from './logo.svg';
+import './App.css';
+
+function App(props) {
+
+  // method of the component that will be bound with HTML element
+  const helloClick =()=>{
+    alert('I am Clicked');
+  };
+  return (
+    <div className="App">
+       <h1>The First Component</h1>
+       {/* the onClick is JSX event property that corresponds to onClick event of HTML  */}
+       <input type="button" value="Hello" onClick={helloClick}/>
+       <br/>
+       <div>
+         <strong>
+            Value received from Parent is {props.msg} 
+         </strong>   
+       </div> 
+    </div>
+  );
+}
+// export the component
+export default App;
+
+
+// index.js
+ReactDOM.render(
+  <React.StrictMode>
+    {/* The React JSX parser allows us to define the compile-time custom attributes
+     to pass data and events across components 
+     Here the 'msg' is a custom JSX attribute 
+     The 'msg' attribute will be used as {props.msg} in App Component */}
+    <App  msg={message}/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
+
+
+        - Use the 'useState()' hook to define a State Property with initial value and method to update an initial value-
 
 
 

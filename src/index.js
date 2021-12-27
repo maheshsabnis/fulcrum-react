@@ -1,12 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+// import the exported component
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const message = 'I am a message from the parent';
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {/* The React JSX parser allows us to define the compile-time custom attributes
+     to pass data and events across components 
+     Here the 'msg' is a custom JSX attribute 
+     The 'msg' attribute will be used as {props.msg} in App Component */}
+    <App  msg={message}/>
   </React.StrictMode>,
   document.getElementById('root')
 );

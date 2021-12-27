@@ -30,7 +30,7 @@
             - A JavaScript Function that is having predefined behavior     
 2. The 'react-dom', the package that is used to Rendering and Mounting the Component in Browser
     - Provide the 'ReactDOM' object that has the 'render()' method to render and 'MOUNT' the UI in HTML page that is executed browser          
-    - Manages the Mounting of UI using the HTML Container element e.g. <div>   
+    - Manages the Mounting of UI using the HTML Container element e.g. div tag   
 
 # Packages those are installed using REACT CLI
 

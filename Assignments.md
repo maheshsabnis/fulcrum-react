@@ -15,3 +15,9 @@
         {CourseName: 'Angular', Fees:7222}
     ]     
     - The end-use can select/ de-select courses, show the sum of the selected courses by end-user in div tag
+
+
+# Day 2: 28-12-2021
+1. Create a Re-Usable Table component based on the following requirements
+    - It must accepts a DataSource property of the type collection to generate Columns and Rows
+    - If the Table Row is clicked then the selected row values must be shown in the TextBoxes and Select Element  

@@ -14,6 +14,8 @@ import SimpleCalculator from './calculator';
 
 import ProductComponent from './components/productcomponent/productcomponent';
 import ProductDynamicComponent from './components/productcomponent/productdynamiccomponent';
+import ProductContextComponent from './components/productcomponent/productcontextcomponent';
+import ProductHttpCallComponent from './components/productcomponent/producthttpcallcomponent';
 
 
 const message = 'I am a message from the parent';
@@ -25,7 +27,7 @@ ReactDOM.render(
      Here the 'msg' is a custom JSX attribute 
      The 'msg' attribute will be used as {props.msg} in App Component */}
     {/* <App  msg={message}/> */}
-    <ProductDynamicComponent/>
+    <ProductHttpCallComponent/>
   </React.StrictMode>,
   document.getElementById('root')
 );

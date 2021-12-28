@@ -298,6 +298,53 @@ export default App;
     - The re-usable component MUST use the 'props' property method to emit data to parent  component. The Parent Component will subscribe to this props.method and receive the data emitted from child.  
 
 
+# using the 'useContext()' Hook
+    - This is an approach of sharing data from parent component to a specific child component    
+    - The child component reads data provided from the parent component an use it for processing 
+    - React.Context
+        - Object provided to define a context-object using 'createContext()' method
+        - const DataContext = createContext(INITIAL-VALUE)
+            - INITIAL-VALUE can be any of the following
+                - null, object, array, date, number, string, etc.
+                - Generally, the 'null' value is used so that then while actually sending data we can use specific-type value
+        - Context Property Objects
+            - Provider Object
+                - Used by Parent-Component to provide data to specific child component, using the 'value' property
+                    - <DataContext.Provider value={}>
+                            <ChildComponent/>
+                      </DataContext.Provider>       
+                    - The 'value' will be available  to <ChildComponent> only    
+                        - The 'value' can be a single object, array, or complex object that contains properties and callback methods in it      
+            - The 'Consumer' object or the 'useContext()' hook
+                - The Child Component will use the 'useContext()' hook to consume the data from the parent component (aka known as Subscription)
+                    - in Child Component code will be 
+                        - const receivedData = useContext(DataContext);
+                            - The data Provided from the parent component will be stored in 'receivedData' property of the child component              
+
+# Using Axios object for Async HTTP Calls
+- axios object methods
+    - get(),post(), put(),delete()
+    - All these methods return
+        - AxiosResponse object the Promise Type Object
+    - Promise.then(SUCCESS-CALLBACK).catch(ERROR-CALLBACK);    
+- The react uses 'useEffect()' hook to execute Long-Running Operation e.g. AJAX Call w/o blocking the Component Rendering.        
+    - The 'useEffect()' will be always called at functional component level and will start executing immediately when the component is loaded 
+    - This will be most suitable for following operations 
+        - Use to make an AJAX calls
+        - Subscribe and de-subscribe the Custom Events in Component  
+    - Syntax:
+        - useEffect(()=>{
+            // initialization Operations, e.g. AJAX call to made when the Component is loaded  
+            // subscribe custom events on the component     
+            return ()=>{
+                // (OPTIONAL) the closing operations e.g.  when the call is completed, release the Promise Object 
+                // release custom events when the component is unloaded 
+            }
+        }, [DEPENDENCY-ARRAY-PARAMETER] );
+        - DEPENDENCY-ARRAY-PARAMETER
+            - Since the 'useEffect()' hook is executed at functional component level, it will be in executing state till the component is loaded and in executing state. If the logic of the useEffect() have already modified the HTML rendering the component, then pass a dependency parameter to the useEffect() and inform it that, the UI is updated, the component has rendered with update values received from useEffect(), so useEffect() can stop 
+
+
 
 
 

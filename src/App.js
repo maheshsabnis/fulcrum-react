@@ -4,7 +4,7 @@ import "./App.css";
 
 function App(props) {
   // define a state property
-
+         // state-property, the function that will be invoked (or executed) based on Event raised on UI           
   const [name, updateName] = useState("Mahesh");
 
   const [heros, getHeros] = useState([
@@ -58,6 +58,9 @@ function App(props) {
              }
            </select>
         </div>     */}
+
+        
+
       {/* Use the DropdownComponent and pass the 'heros' state to it */}
       <DropdownComponent dataSource={heros}></DropdownComponent>
       <hr />

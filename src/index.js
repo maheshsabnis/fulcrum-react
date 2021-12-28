@@ -1,11 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+
+// importing bootstrap
+import './../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+
 // import the exported component
 import App from './App';
 
 import reportWebVitals from './reportWebVitals';
 import SimpleCalculator from './calculator';
+
+import ProductComponent from './components/productcomponent/productcomponent';
+import ProductDynamicComponent from './components/productcomponent/productdynamiccomponent';
+
 
 const message = 'I am a message from the parent';
 
@@ -16,7 +25,7 @@ ReactDOM.render(
      Here the 'msg' is a custom JSX attribute 
      The 'msg' attribute will be used as {props.msg} in App Component */}
     {/* <App  msg={message}/> */}
-    <SimpleCalculator/>
+    <ProductDynamicComponent/>
   </React.StrictMode>,
   document.getElementById('root')
 );

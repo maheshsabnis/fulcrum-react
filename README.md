@@ -283,6 +283,22 @@ export default App;
 
 ```
 
+    - Component's State Properties can be used for data binding and updating the compojent with the state changes based on UI events. Where as, the local variable to component can be changed based on events like the state properties
+
+    - Install Bootstrap for Styling and axios for HTTP Calls
+        - npm install --save bootstrap axios
+    - If the Component's UI Element is bound to Complex Object's property, then to update the Object's property, use the 'spread operator' to update the object
+        - '...'     
+
+# Rules for Creating Re-Usable Components
+1. Make sure that, re-usable Component accept data to generate its UI
+    - To prevent the re-usable component from crash, please validate the received data for 'undefined' or 'length' or '0' value or 'NaN' value or 'Empty' value 
+2. Make sure that, if the re-usable Component wants to emit data to its parent, then the re-usable component must have an event registered in it.
+    - If the emitted data from re-usable component is updating the value of the 'State' property of the parent component, then the re-usable component must be aware (or passed) about the 'State' property of the parent-component
+    - The re-usable component MUST use the 'props' property method to emit data to parent  component. The Parent Component will subscribe to this props.method and receive the data emitted from child.  
+
+
+
 
 
  

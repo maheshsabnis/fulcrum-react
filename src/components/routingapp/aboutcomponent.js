@@ -9,7 +9,7 @@ const AboutComponent=()=>{
 
     const routeToContact=()=>{
         // navigate to the contact component
-        navigate('/contact', 10);
+        navigate('/contact');
     };
 
     return (

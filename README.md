@@ -385,7 +385,34 @@ export default App;
     - Define a Route Table in the 'App' Component in App.js    
     - Modify the index.js that will import BrowserRouter and App component will loaded and executed under the BrowserRouter
 
+# Recommended Coding Standards while working with React Application
+1. If the Component has any condition that throws exceptions then make sure that the FallBack UI is rendered instead of crashing the Component and hence the complete UI
+    - This is known as Error Boundary
+    - There are tow ways provided as follows to Handle Errors
+        1. Create a FallbackUI in 'each child component' that may raise exception which results into an error and crash component and hence the whole DOM tree, and then use 'try...catch' block to execute the logic and when an exception occurs return the FallbackUI in catch block
 
+        2. The ErrorBoundary Component in React 16.0+ 
+            - This is a Class Component that contains componentDidCatch() 
+            - This class component will be responsible for listening to error exception message from its children components and render the FallBackUI
+
+2. Make sure that the Front-End Business Code is divided into separate code files and load these files in the component as when required
+    - This is Called as 'Code-Splitting'
+    - This is applied to reusable-components also
+    - Observation of Code-Splitting
+        - If the re-usable components takes time to load, then implement the 'Lazy-Loading'
+            - Use the 'Suspense' component to show FallbackUI till the lazy-loaded components is not loaded 
+            - Suspenses is the Standard 'react' component     
+3. Use the React Standard 'Fragment' component for default layout
+4. If state property is to be modified or updated based on data received from external service (e.g. REST API), then instead of using the useState() to directly update the state property, use 'useReducer()' hook
+    - The useReducer() will update state in Multiple-Stages as follows
+        - Initiating
+        - Progress
+        - Updated With Final Value when the External call is successfully completed
+        - Failed because the External Call is failed    
+            - state = { status: '', data:'', error:'' };
+                - status: Call Initialized | Call In Progress | Call is Completed | Call Failed
+                - data: [] | [DATA-RECEIVED-FROM-EXTERNAL-CALL]
+                - error: undefined Or Empty | Error in Call
 
 
 

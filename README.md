@@ -364,14 +364,27 @@ export default App;
         - Link:
             - The object that is used to query to route table 
             - Route Links            
+            - The 'to' property which accepts URL for querying route table 
     - Router Hooks
         - useNavigate()
             - Used for 'Event-Based' navigation e.g. On Button Click Navigate to the Route
             - Navigate to Route on HTML element's events instead of using 'Link'     
         - useParams()
             - Used to read The URL parameter to perform Parameterized routing         
-4. Install it as follows
-    - npm install --save react-router-dom           
+4. Implementation
+    - Install it as follows
+        - npm install --save react-router-dom      
+    - Create Components for routing by adding routingapp folder in src/components folder 
+        - HomeComponent
+        - AboutComponent
+        - ContactComponent
+        - LayoutComponent
+            - This will act as a Container Component for Home, About, Contact Components
+            - This component will have the the Navigation Links for the routing
+        - NotFoundComponent    
+    - Define a Route Table in the 'App' Component in App.js    
+    - Modify the index.js that will import BrowserRouter and App component will loaded and executed under the BrowserRouter
+
 
 
 

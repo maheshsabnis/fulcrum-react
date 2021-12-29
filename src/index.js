@@ -17,6 +17,7 @@ import ProductDynamicComponent from './components/productcomponent/productdynami
 import ProductContextComponent from './components/productcomponent/productcontextcomponent';
 import ProductHttpCallComponent from './components/productcomponent/producthttpcallcomponent';
 
+import {BrowserRouter} from 'react-router-dom';
 
 const message = 'I am a message from the parent';
 
@@ -27,7 +28,9 @@ ReactDOM.render(
      Here the 'msg' is a custom JSX attribute 
      The 'msg' attribute will be used as {props.msg} in App Component */}
     {/* <App  msg={message}/> */}
-    <ProductHttpCallComponent/>
+    <BrowserRouter>
+       <App/>
+    </BrowserRouter> 
   </React.StrictMode>,
   document.getElementById('root')
 );

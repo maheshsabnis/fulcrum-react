@@ -13,6 +13,8 @@ const DataGridContextEventComponent = () => {
 
   let dataSource = subscribe[Object.keys(subscribe)[0]]; // the 'array' received from the  parent Component
   let event = subscribe[Object.keys(subscribe)[1]]; // the function received from parent to child
+  let showDelete = subscribe[Object.keys(subscribe)[2]]; // the delete boolean value
+  let deleteRecord = subscribe[Object.keys(subscribe)[3]]; // the deleteRecord action
 
   // 2. use the dataSource to generate the table
   if (dataSource === undefined || dataSource.length === 0) {
@@ -35,6 +37,13 @@ const DataGridContextEventComponent = () => {
               {columns.map((col, iCol) => (
                 <td key={iCol}>{record[col]}</td>
               ))}
+              <td>
+                {/* <input type="button" value='Delete' className="btn btn-danger"
+                  hidden={!showDelete}/> */}
+                  <button className="btn btn-danger" 
+                    onClick={()=>deleteRecord(record)}
+                  hidden={!showDelete}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>

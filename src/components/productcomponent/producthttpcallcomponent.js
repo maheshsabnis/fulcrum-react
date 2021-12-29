@@ -25,6 +25,9 @@ const ProductHttpCallComponent = () => {
 
   const [message, setMessage] = useState('');
 
+  // define a state for the deleteButton in DataGridComponent from parent-to-child
+  const [canDelete, toggleDelete]= useState(true);
+
   // local variables to component
   const Categories = ["Electronics", "Electrical", "Home Appliances"];
 
@@ -73,6 +76,15 @@ const ProductHttpCallComponent = () => {
         setMessage(`Error in saving data ${error.message}`);
       });
   };  
+
+  const deleteRercord=(prd)=>{
+    console.log(`Record to be deleted ${JSON.stringify(prd)}`);
+    serv.deleteProduct(prd.ProductRowId).then((response)=>{
+      setMessage('Record Delete Successfully');
+    }).catch((error)=>{
+      setMessage(`Error in saving data ${error.message}`);
+    });
+  }
   return (
     <div className="container">
       <h1>The Product Information System with Dynamic Table and Re-Usable Components</h1>
@@ -137,7 +149,7 @@ const ProductHttpCallComponent = () => {
       {/* Use the DataContext.Provider to provide the products array and the setProduct action that will receiv the selected product from the Table Row when the row is clicked in the DataGridContextEventComponent  */}
       <h5>Using Context</h5>
       <div className="container">{message}</div>
-      <DataContext.Provider value={{products, setProduct}}>
+      <DataContext.Provider value={{products, setProduct, canDelete, deleteRercord}}>
           <DataGridContextEventComponent/>
       </DataContext.Provider>
 

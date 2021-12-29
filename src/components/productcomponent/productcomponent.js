@@ -1,6 +1,7 @@
 // import the useState
 import { useState } from "react";
 
+
 const ProductComponent = () => {
   // define state properties
   const [product, setProduct] = useState({

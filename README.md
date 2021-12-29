@@ -386,7 +386,7 @@ export default App;
     - Modify the index.js that will import BrowserRouter and App component will loaded and executed under the BrowserRouter
 
 # Recommended Coding Standards while working with React Application
-1. If the Component has any condition that throws exceptions then make sure that the FallBack UI is rendered instead of crashing the Component and hence the complete UI
+1. (Mandatory) If the Component has any condition that throws exceptions then make sure that the FallBack UI is rendered instead of crashing the Component and hence the complete UI
     - This is known as Error Boundary
     - There are tow ways provided as follows to Handle Errors
         1. Create a FallbackUI in 'each child component' that may raise exception which results into an error and crash component and hence the whole DOM tree, and then use 'try...catch' block to execute the logic and when an exception occurs return the FallbackUI in catch block
@@ -396,13 +396,28 @@ export default App;
             - This class component will be responsible for listening to error exception message from its children components and render the FallBackUI
 
 2. Make sure that the Front-End Business Code is divided into separate code files and load these files in the component as when required
-    - This is Called as 'Code-Splitting'
+    - This is Called as 'Code-Splitting' (Mandatory)
     - This is applied to reusable-components also
     - Observation of Code-Splitting
         - If the re-usable components takes time to load, then implement the 'Lazy-Loading'
             - Use the 'Suspense' component to show FallbackUI till the lazy-loaded components is not loaded 
             - Suspenses is the Standard 'react' component     
-3. Use the React Standard 'Fragment' component for default layout
+        
+        - For Lazy Loading use the 
+            - React.lazy(()=> import (Relative Path of the Component)) method    
+
+            - const MyComponent = React.lazy(()=>import('./MyComponent')); 
+                - The './MyComponent' may be present in the mycomponent.js
+                - The React.lazy(), look for the component and load the component asynchronously 
+                    - First, Find File
+                    - Second, check if the file contains Exportable React Component
+                    - Third, The Component will be loaded
+                        - Component's Instance will be created
+                            - All dependencies of the component will be resolved and added into the instance
+                        - There may be a considerable delay in instance creation, in such case create 'Fallback-place-holder' known as 'Suspense'
+                    - The 'Suspense' will show the fallback UI till the actual component is not loaded          
+3. Use the React Standard 'Fragment' component for default layout (Good For UI Layouting)
+
 4. If state property is to be modified or updated based on data received from external service (e.g. REST API), then instead of using the useState() to directly update the state property, use 'useReducer()' hook
     - The useReducer() will update state in Multiple-Stages as follows
         - Initiating
@@ -414,6 +429,27 @@ export default App;
                 - data: [] | [DATA-RECEIVED-FROM-EXTERNAL-CALL]
                 - error: undefined Or Empty | Error in Call
 
+    - The useReducer() is an approach to update the state based on Condition from Initial-to-Final
+        - useReducer(Reducer, InitialState)
+            - Reducer()
+                - Pure JavaScript Function(?)
+                    - It is function has has input and output parameter as Same Object             
+                - function reducer(state, action){....}
+                    - The 'state' is the new data (oe value) to be updated in 'STATE-PROPERTY-OF-THE-COMPONENT'
+                    - The 'action', a CONDITION of the execution based on which the state is updated to new value
+                        - e.g. action can be : DATA_FETCH_STARTED, DATA_FETCH_SUCCESSFUL, DATA_FETCH_FAILED
+                    - The reducer() function returns the modified 'state'    
+            - InitialState
+                - This is an actual object that is to be updated   
+        - STEPS for Using useReducer()
+            - Define a State
+                - Complex Object
+            - Define a Reducer Function
+                - Explained Above
+            - Define a Custom Hook that will use the useReducer() to update the state
+                - The function that will be used by component to update the state
+            - Create a Component that will use the Custom Hook for state updates   
+                - This will use the Custom Hook            
 
 
 

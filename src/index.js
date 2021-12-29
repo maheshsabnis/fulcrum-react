@@ -20,6 +20,8 @@ import ProductHttpCallComponent from './components/productcomponent/producthttpc
 import {BrowserRouter} from 'react-router-dom';
 import ContainerComponent from './components/errorboundary/simpleerrorcheckcomponent';
 import ContainerWithErrorBoundaryComponent from './components/errorboundary/errorboundarycomponent';
+import LazyloadDemoComponent from './components/lazyloadcomponent/lazyloaddemocomponent';
+import UseReducerComponent from './components/usereducerdemo/usereducercomponent';
 
 const message = 'I am a message from the parent';
 
@@ -33,7 +35,7 @@ ReactDOM.render(
     {/* <BrowserRouter>
        <App/>
     </BrowserRouter>  */}
-    <ContainerWithErrorBoundaryComponent/>
+     <UseReducerComponent></UseReducerComponent>
   </React.StrictMode>,
   document.getElementById('root')
 );

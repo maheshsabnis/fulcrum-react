@@ -342,7 +342,37 @@ export default App;
             }
         }, [DEPENDENCY-ARRAY-PARAMETER] );
         - DEPENDENCY-ARRAY-PARAMETER
-            - Since the 'useEffect()' hook is executed at functional component level, it will be in executing state till the component is loaded and in executing state. If the logic of the useEffect() have already modified the HTML rendering the component, then pass a dependency parameter to the useEffect() and inform it that, the UI is updated, the component has rendered with update values received from useEffect(), so useEffect() can stop 
+            - Since the 'useEffect()' hook is executed at functional component level, it will be in executing state till the component is loaded and in executing state. If the logic of the useEffect() have already modified the HTML rendering the component, then pass a dependency parameter to the useEffect() and inform it that, the UI is updated, the component has rendered with update values received from useEffect(), so useEffect() can stop
+
+# Single Page Application in React.js 
+1. React.js 'DOES-NOT-HAVE' support for routing out-of-the-box 
+2. To implement the SPA in React, we need 'react-router-dom' library
+    - This is build on the top of the React.js by Third-Party Community
+    - React Router is a lightweight, fully-featured routing library for the React JavaScript library.
+3. React-Router-DOM Object Models  
+    - BrowserRouter
+        - Used to manage the Browser URLs for Clean routing based on the URL match in the Router Table
+        - If the Match is not found then either Not-Found is shown or by default navigate to home page (Developer MUST Configure this)
+    - Routes
+        - The Route Table that contains 'Route' Object, it is an expression for Routing
+        - Route: The Expression for routing with following properties
+            - path: The URL
+            - element: The Component to navigate to based on URL
+            - index: The default Navigation (the default component to be loaded)
+        - Outlet:
+            - The Object that render the Children (components based on URL navigation)
+        - Link:
+            - The object that is used to query to route table 
+            - Route Links            
+    - Router Hooks
+        - useNavigate()
+            - Used for 'Event-Based' navigation e.g. On Button Click Navigate to the Route
+            - Navigate to Route on HTML element's events instead of using 'Link'     
+        - useParams()
+            - Used to read The URL parameter to perform Parameterized routing         
+4. Install it as follows
+    - npm install --save react-router-dom           
+
 
 
 

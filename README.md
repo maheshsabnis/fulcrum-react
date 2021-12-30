@@ -451,7 +451,39 @@ export default App;
             - Create a Component that will use the Custom Hook for state updates   
                 - This will use the Custom Hook            
 
+# Using Redux
 
+1. Install Libraries for Redux with React
+    - npm install redux react-redux
+2. Various Object provided by these libraries    
+    - redux
+        - The 'store' object created using 'createStore()' method
+            - This is a Global Application State
+        - The 'combineReducers()' method
+            - Used to combine all reducer functions those are responsible to update the state in store using Read/Write operations
+        - The 'applyMiddleware()' method
+            - The method that is used when an action is performing asynchronous execution e.g. Promise Based Execution
+        - The 'compose()' method
+            - Configure the store to use the Middleware using apply Middleware     
+        - Define a Global Store as Follows
+            - let store = createStore(reducer, applyMiddleware, compose ); 
+    - react-redux (4.0+ with React 16.8+)
+        - The 'Provider' Object
+            - A Container Component that provides 'store' property which accepts the 'redux store'
+            - The Provider configures the redux-store for all react components executing inside it
+            - <Provider store={reduxStore}>
+                  <MyReactComponent/>
+              </Provider>         
+            - The 'reduxStore' is configured to MyReactComponent and all of its children components         
+        - The 'useDispatch()', a hook that is used to dispatch an Action from the Component
+            - Link the useDispatch() with 'an event' of UI element of the component
+        - The 'useSelector()', a hook that is used to subscribe the store to component and read data from the component   
+        - useDispatch() and useSelector() hooks are responsible to connect the React Component with Redux Object Model     
 
-
- 
+        - Some Older react-redux object for connecting React Component with Redux
+            - The 'connect()' method
+        - connect(mapDispatchToProps, mapStoreToProps)(MyReactComponent) 
+            - mapDispatchToProps (replaced by useDispatch())
+                - Listen to an event raised on the component and Link this to dispatch action with data from the component       
+            - mapStoreToProps (replaced by useSelector())
+                - Subscribe the Component with the Store so that the data from the store can be Read/Written by the component     

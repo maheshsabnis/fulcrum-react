@@ -56,7 +56,7 @@ const useReducerAsyncRest=(url)=>{
             // Processing the Response and receiving data from it
             action({type: 'DATA_FETCH_SUCCESS', payload: result.data});
         }).catch((error)=>{
-            action({type: 'DATA_FETCH_FAILED', payload: error.message})
+            action({type: ' ED', payload: error.message})
         });
     },[]);
     // return the final data

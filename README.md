@@ -487,3 +487,19 @@ export default App;
                 - Listen to an event raised on the component and Link this to dispatch action with data from the component       
             - mapStoreToProps (replaced by useSelector())
                 - Subscribe the Component with the Store so that the data from the store can be Read/Written by the component     
+# Using Async Operations in Redux Apps with Middlewares
+1. Since the component does not directly responsible for Promise Subscription, we need 'some other object' (?) to manage the Promise and subscriptions to it
+    - The object will be Middleware
+    - Redux for State Management and For Async action is Redux we need Middlewares
+        - Thunk
+            - Very Easy Middleware for Understanding and Implementation
+        - Saga
+            - Industry Standard but Complex and it has following prerequisites
+                - Knowledge of Adv. ES 6 Generators
+                - Generators are the Sequence Generating Objects in ES 6 
+                - Typically Used in case of large-scale complex Collection Iterations (like for..of loop)
+                - function* MyGenerator(start, end, step){.... logic... for sequencing}   
+            - Each Saga Function for Async Operation Uses Generator Functions to manage promises          
+    - The 'redux-thunk' package
+        - COnfiguring this package with the redux store using the 'applyMiddleware()' method of the 'redux'
+            - npm install ---save redux-thunk

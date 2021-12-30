@@ -8,28 +8,40 @@ import "./../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 // import required object for React-Redux application
 
-// 1. the createStore()
-import { createStore } from "redux";
+// 1. the createStore() and applyMiddleware , this will be used for managing
+// asynchronous operations from the action method that is dispatched from the
+// component
+import { createStore, applyMiddleware } from "redux";
 
 // 2.  the reducers
-import reducers from "./reduxapp/reducers/reducers";
-
+import oneReducer from "./reduxthunk/reducres/reducers";
 // 3. the Provider
 import { Provider } from "react-redux";
 
-import MainReduxComponent from "./reduxapp/mainreduxcomponent";
+// 4. import the Main Component
+import MainReduxThunkComponent from "./reduxthunk/mainreduxthunkcomponent";
+
+// 5: import the redux-thunk
+// the thunk object will manage and monitor all async calls
+// using Redux Middleware Infrastructure configured using
+// applyMiddleware() method  
+import thunk from 'redux-thunk';
+
+
+// 6. import Redux-Dev-Tools extensions that will log the redux in browser
+// NOTE: Use it in Dev. Mode
+// composeWithDevTools() this method will configure the DEVTOOLS and
+// middleware in store as a single object 
+
+import {composeWithDevTools} from  'redux-devtools-extension';
 
 import reportWebVitals from "./reportWebVitals";
 
-// 4. Create store that will be monitored by reducers for any Read/Write operations
-// NOTE: For development purpose simulate the Redux Dev Tools provided they are installed
-// as Browser Plug-In
-// window.__REDUX_DEVTOOLS_EXTENSION__: Detect if the extension installed in Browser
-// window.__REDUX_DEVTOOLS_EXTENSION__(): the extension method that will log the Redux Store, and Dispatched actions
-
+// 6. Create store that will be monitored by reducers for any Read/Write operations
+ 
 let store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  oneReducer,
+  composeWithDevTools(applyMiddleware(thunk))
 );
 
 // 5. Link the MainReduxComponent to Redux Store using <Provider store={store}>
@@ -37,7 +49,7 @@ let store = createStore(
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <MainReduxComponent></MainReduxComponent>
+      <MainReduxThunkComponent></MainReduxThunkComponent>
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
